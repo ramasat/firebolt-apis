@@ -53,18 +53,51 @@ In addition to the above capabilities, there are more sensitive operations such 
 ## 3. Voice Guidance Settings
 
 Voice Guidance settings shall include the following:
-* enabled: Whether or not voice guidance should be enabled in the system (boolean)
+* enabled: 
+  * Description: Whether or not voice guidance should be enabled in the system 
+  * type: boolean 
+  * Get / Set Support: Both get and set are supported
+  * Notifications: onenabledchanged
 * speed: The speed of the voice (number). Note: Deprecate this.
-* speechrate: The speech rate of the voice (string).
-* language: The current selection of the language in which the text to be spoken with. IETF BCP 47 code, ex: en-US (string)
-* voice: The voice corresponds to the currently selected language. Should be one of the system supported voice. Please refer "voicelist" method (string)
-* ttsvolume: The volume of the voice guidance voice (number - 1 to 100)
-* playervolume: The volume of the primary player volume during the vg playback (number - 1 to 100)
-* fallbacktext: Text that needs to be converted into voice and spoken, whenever there is a temporary issue in converting the passed text. For ex: tts engine not reachable; (string)
-* voicelist: The list of supported languages and the corresponding voices (ex: en-US language that has support for two voices "Ava" and "carol")
+* speechrate:
+  * Description: The speech rate of the voice
+  * type: string 
+  * Get / Set Support: Both get and set are supported
+  * Notifications: onspeechratechanged
+* language:
+  * Description: The current selection of the language in which the text to be spoken with. IETF BCP 47 code, ex: en-US
+  * type: string 
+  * Get / Set Support: Both get and set are supported
+  * Notifications: onlanguagechanged
+* voice:
+  * Description: The voice corresponds to the currently selected language. Should be one of the system supported voice. Please refer "voicelist" method
+  * type: string 
+  * Get / Set Support: Both get and set are supported
+  * Notifications: onvoicechanged
+* ttsvolume:
+  * Description: The volume of the voice guidance voice (number - 1 to 100)
+  * type: number 
+  * Get / Set Support: Both get and set are supported
+  * Notifications: onvolumechanged
+* playervolume:
+  * Description: The volume of the primary player volume during the vg playback (number - 1 to 100)
+  * type: number 
+  * Get / Set Support: Only set is supported
+  * Notifications: N/A
+* fallbacktext:
+  * Description: Text that needs to be converted into voice and spoken, whenever there is a temporary issue in converting the passed text. For ex: tts engine not reachable.
+  * type: string 
+  * Get / Set Support: Only set is supported
+  * Notifications: N/A
+* voicelist:
+  * Description: The list of supported languages and the corresponding voices (ex: en-US language that has support for two voices "Ava" and "carol")
+  * type: array 
+  * Get / Set Support: Only get is supported
+  * Notifications: N/A
+  
 Note: Existing "accessibility.voiceGuidanceSettings()" that returns VoiceGuidanceSettings object shall be enhanced to cover these settings. It currently supports only enabled and speed. This note shall be dropped once these settings are added to the VoiceGuidanceSettings object.
 
-To do: Expand each of these settings into a sub section.
+The "Set" for all of the above properties are made available through manage sdk, where as "get" is made available through core sdk.
 
 ## 4. Voice Guidance Playback
 
